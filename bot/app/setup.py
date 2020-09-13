@@ -1,6 +1,7 @@
 from .handlers.command_handlers import *
 from .handlers.quest_callback_handlers import *
 from .handlers.quest_message_handlers import *
+from .handlers.crosslettering_handlers import *
 
 
 def setup_handlers(dp):
@@ -10,9 +11,18 @@ def setup_handlers(dp):
     dp.register_message_handler(start, commands=['start'], state="*")
     dp.register_message_handler(get_id, commands=['get_id'], state="*")
     dp.register_message_handler(quest, commands=['quest'], state="*")
+    dp.register_message_handler(crosslettering, commands=['crosslettering'], state="*")
+    dp.register_message_handler(exchange_crslt_info, commands=['crslt'], state="*")
 
     """
-        Quest message handlers
+            Crosslettering handlers
+    """
+    dp.register_callback_query_handler(handle_crslt_init, lambda c: c.data == "init_crosslettering", state="*")
+    dp.register_message_handler(handle_crslt_info, state=CrossletteringState.waiting_for_info,
+                                content_types=types.ContentTypes.TEXT)
+
+    """
+            Quest message handlers
     """
     dp.register_message_handler(process_user_input_first_question, state=QuestState.first_question,
                                 content_types=types.ContentTypes.TEXT)

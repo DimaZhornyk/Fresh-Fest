@@ -9,3 +9,8 @@ class QuestState(StatesGroup):
     third_test = State()
     third_question = State()
     completed = State()
+
+
+class CrossletteringState(StatesGroup):
+    waiting_for_info = State()
+    sent = State()

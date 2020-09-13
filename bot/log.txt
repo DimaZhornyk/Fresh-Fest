@@ -1,3 +1,3 @@
-2020-09-12 14:04:34,023 aiogram      INFO     Bot: The FreshFest [@fresh_fest_bot]
-2020-09-12 14:04:34,353 aiogram      WARNING  Updates were skipped successfully.
-2020-09-12 14:04:34,353 aiogram.dispatcher.dispatcher INFO     Start polling.
+2020-09-13 23:31:25,596 aiogram      INFO     Bot: The FreshFest [@fresh_fest_bot]
+2020-09-13 23:31:25,903 aiogram      WARNING  Updates were skipped successfully.
+2020-09-13 23:31:25,904 aiogram.dispatcher.dispatcher INFO     Start polling.

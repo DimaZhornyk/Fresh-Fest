@@ -3,7 +3,6 @@ from aiogram.dispatcher import FSMContext
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 from ..db.db import set_quest_start_time
-from ..__main__ import bot
 from ..states import QuestState
 from ..templates import *
 
