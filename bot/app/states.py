@@ -8,6 +8,8 @@ class QuestState(StatesGroup):
     second_question = State()
     third_test = State()
     third_question = State()
+    fourth_test = State()
+    fourth_question = State()
     completed = State()
 
 

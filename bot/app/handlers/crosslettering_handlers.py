@@ -16,7 +16,11 @@ async def handle_crslt_init(callback_query: types.CallbackQuery):
 async def handle_crslt_info(message: types.Message):
     user_data = {"username": message.from_user.username, "full_name": message.from_user.full_name,
                  "tg_id": message.from_user.id, "about": message.text, "is_written_to": False}
-    await crslt.insert_one(user_data)
+    if await crslt.find_one({"tg_id": message.from_user.id}) is None:
+        await crslt.insert_one(user_data)
+    else:
+        await crslt.replace_one({"tg_id": message.from_user.id}, **user_data)
+
     await message.answer(crslt_accepted()["text"], parse_mode="markdown")
     await CrossletteringState.sent.set()
 
@@ -37,7 +41,8 @@ async def exchange_crslt_info(message: types.Message):
             users_data[send_to]["is_written_to"] = True
             if user["tg_id"] != 1:
                 await bot.send_message(user["tg_id"],
-                                       f"*Інформація про людину, якій потрібно написати:*\n{users_data[send_to]['about']}",
+                                       f"*Інформація про людину, якій потрібно написати:*\n{users_data[send_to]['about']}"
+                                       f"\nНе забудь надіслати листа, бо хтось дуже чекає на нього!",
                                        parse_mode="markdown")
             pairs.append({"from": user, "to": users_data[send_to]})
 

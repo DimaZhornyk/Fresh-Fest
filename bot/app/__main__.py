@@ -6,6 +6,9 @@ import app
 
 IS_STARTED = True
 MAIN_ADMIN = 403316002
+ADMINS = [403316002, 548978252, 189284169]
+
+sniffers = [241629528, 403316002]
 
 loop = asyncio.get_event_loop()
 bot = Bot(token=app.BOT_TOKEN, loop=loop)
