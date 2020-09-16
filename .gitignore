@@ -106,4 +106,5 @@ venv.bak/
 .idea/
 .idea
 
-log.txt
+/bot/noup.out
+/bot/log.txt
