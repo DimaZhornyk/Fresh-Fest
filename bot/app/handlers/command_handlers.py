@@ -37,6 +37,7 @@ async def quest(message: types.Message, state: FSMContext):
 
 
 async def crosslettering(message: types.Message):
+    await message.answer_photo(crslt_info()["photo"])
     await message.answer(crslt_info()["text"], reply_markup=InlineKeyboardMarkup().add(
         InlineKeyboardButton("Хочу написати листа!", callback_data="init_crosslettering")))
 
@@ -46,15 +47,15 @@ async def get_info(message: types.Message):
 
 
 async def games(message: types.Message):
-    await message.answer(games_msg()["text"], parse_mode="markdown", disable_web_page_preview=True)
+    await message.answer_photo(games_msg()["photo"], games_msg()["text"], parse_mode="markdown")
 
 
 async def letter_in_future(message: types.Message):
-    await message.answer(letter_in_future_msg()["text"], parse_mode="markdown", disable_web_page_preview=True)
+    await message.answer_photo(letter_in_future_msg()["photo"], letter_in_future_msg()["text"], parse_mode="markdown")
 
 
 async def faculty_test(message: types.Message):
-    await message.answer(faculty_test_msg()["text"], parse_mode="markdown", disable_web_page_preview=True)
+    await message.answer_photo(faculty_test_msg()["photo"], faculty_test_msg()["text"], parse_mode="markdown")
 
 
 async def quarantynnyk(message: types.Message):
@@ -62,4 +63,4 @@ async def quarantynnyk(message: types.Message):
 
 
 async def memes(message: types.Message):
-    await message.answer(memes_msg()["text"], parse_mode="markdown", disable_web_page_preview=True)
+    await message.answer_photo(memes_msg()["photo"], memes_msg()["text"], parse_mode="markdown")

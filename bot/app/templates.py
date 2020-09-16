@@ -1,3 +1,4 @@
+from aiogram import types
 from aiogram.utils.markdown import link
 from aiogram.utils.emoji import emojize
 
@@ -170,7 +171,8 @@ def crslt_info():
                 "  -максимальна відкритість;\n"
                 "  -ніякого діджитала — тільки паперові листи;\n"
                 "  -лише з власного волевиявлення;\n\n"
-                "Пиши. Чекаємо."}
+                "Пиши. Чекаємо.",
+        "photo": types.InputFile('./static/crosslettering.jpg')}
 
 
 def crslt_description():
@@ -240,7 +242,8 @@ def info_msg():
 
 
 def games_msg():
-    return {"text": "Games description and links"}
+    return {"text": "Games description and links",
+            "photo": types.InputFile('./static/discord.jpg')}
 
 
 def letter_in_future_msg():
@@ -251,7 +254,8 @@ def letter_in_future_msg():
                 " де можеш написати все, що завгодно: свої думки, почуття, мрії,"
                 " або навіть запитання до самого себе. 20го, на спешл фреш фесті,"
                 f" заповнюй формочку {link('тут', 'https://docs.google.com/forms/d/e/1FAIpQLSeQd96BhhTFB-nedvErdfQr9Mlz20BZVHPXGYIxb8Mgwll6eA/viewform?usp=sf_link')}, а ми потурбуємося про те,"
-                " щоб через чотири роки звісточка з минулого успішно дісталася до тебе"}
+                " щоб через чотири роки звісточка з минулого успішно дісталася до тебе",
+        "photo": types.InputFile('./static/mails_in_future.jpg')}
 
 
 def faculty_test_msg():
@@ -260,7 +264,8 @@ def faculty_test_msg():
                 " але досі не знаеш який ти факультет в могилянці?\n"
                 f"Тоді хучшіш проходь наш {link('тест', 'http://www.quiz-maker.com/QYS5XZ3UN')}! "
                 "Судячи з того яку каву ти п‘єш, чим займаєшся у вільний час та які "
-                "меми полюбляєш ми визначимо чи правильний ти зробив вибір при вступі"
+                "меми полюбляєш ми визначимо чи правильний ти зробив вибір при вступі",
+        "photo": types.InputFile('./static/tests.jpg')
     }
 
 
@@ -272,5 +277,6 @@ def quarantynnyk_msg():
 
 def memes_msg():
     return {
-        "text": "memes description"
+        "text": "memes description",
+        "photo": types.InputFile('./static/memes.jpg')
     }
