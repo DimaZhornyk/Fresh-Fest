@@ -280,3 +280,12 @@ def memes_msg():
         "text": "memes description",
         "photo": types.InputFile('./static/memes.jpg')
     }
+
+
+def forbid_msg():
+    return {
+        "text": "Привіт!\n"
+                "Ми ще поки готуємо взлом пентагону, виносимо геймерські столи і запускаємо ігри.\n"
+                "Повертайся сюди 20.09.2020 о 17:00!",
+        "photo": "types.InputFile('./static/ff_image.JPG')"
+    }

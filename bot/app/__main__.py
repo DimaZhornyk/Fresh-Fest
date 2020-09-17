@@ -4,7 +4,7 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
 import app
 
-IS_STARTED = True
+started = False
 MAIN_ADMIN = 403316002
 ADMINS = [403316002, 548978252, 189284169]
 
