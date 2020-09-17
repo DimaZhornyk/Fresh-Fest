@@ -20,6 +20,7 @@ def setup_handlers(dp):
     dp.register_message_handler(quarantynnyk, commands=['quarantynnyk'], state="*")
     dp.register_message_handler(memes, commands=['memes'], state="*")
     dp.register_message_handler(faculty_test, commands=['faculty_test'], state="*")
+    dp.register_message_handler(change_global_state, commands=['change_state'], state="*")
 
     """
             Crosslettering handlers

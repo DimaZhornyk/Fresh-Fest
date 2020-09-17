@@ -1,17 +1,17 @@
 import time
 
-from aiogram import types
-from aiogram.dispatcher import FSMContext
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 from ..states import QuestState
 from ..templates import *
 from ..db.db_setup import users
+from ..__main__ import bot
 
 
 async def give_quest_rules(callback_query: types.CallbackQuery):
-    await callback_query.message.edit_text(quest_rules()['text'], reply_markup=InlineKeyboardMarkup().add(
+    await callback_query.message.answer(quest_rules()['text'], reply_markup=InlineKeyboardMarkup().add(
         InlineKeyboardButton("Так!", callback_data="start_quest")))
+    await callback_query.message.delete()
     await callback_query.answer()
 
 
@@ -38,7 +38,8 @@ async def process_quest_start(callback_query: types.CallbackQuery):
     else:
         await users.update_one({"tg_id": callback_query.from_user.id}, {"$set": {"quest_start": time.time()}})
     markup = (await get_four_buttons_markup(quest_data()[0]["answers"]))
-    await callback_query.message.edit_text(quest_data()[0]["question"], parse_mode="markdown", reply_markup=markup)
+    await callback_query.message.answer(quest_data()[0]["question"], parse_mode="markdown", reply_markup=markup)
+    await callback_query.message.delete()
     await callback_query.answer()
 
 
@@ -48,6 +49,9 @@ async def answer_wrong_callback(callback_query: types.CallbackQuery):
 
 async def correct_answer_test(callback_query: types.CallbackQuery):
     await QuestState.next()
+    await callback_query.answer()
     state_num = int(callback_query.data.split('|')[1])
-    await callback_query.message.edit_text(quest_data()[state_num]['task'],
-                                           parse_mode="markdown", disable_web_page_preview=True)
+    await callback_query.message.answer(quest_data()[state_num]["task"],
+                                        parse_mode="markdown",
+                                        disable_web_page_preview=True)
+    await callback_query.message.delete()

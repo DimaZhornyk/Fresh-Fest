@@ -4,7 +4,7 @@ from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-from ..__main__ import started
+from ..__main__ import started, MAIN_ADMIN
 from ..templates import *
 from ..db.db_setup import users
 
@@ -102,6 +102,7 @@ async def forbid_message(message: types.Message):
 
 
 async def change_global_state(message: types.Message):
-    global started
-    started = not started
-    await message.answer("started now is: ")
+    if message.from_user.id == MAIN_ADMIN:
+        global started
+        started = not started
+        await message.answer(started)
