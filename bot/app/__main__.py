@@ -5,8 +5,11 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 import app
 
 started = False
+quest_is_active = True
+stream_link = ""
+
 MAIN_ADMIN = 403316002
-ADMINS = [403316002, 548978252, 189284169]
+ADMINS = [403316002, 189284169, 330644315]
 
 sniffers = [241629528, 403316002]
 

@@ -16,3 +16,4 @@ class QuestState(StatesGroup):
 class CrossletteringState(StatesGroup):
     waiting_for_info = State()
     sent = State()
+

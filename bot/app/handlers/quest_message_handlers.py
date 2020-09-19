@@ -5,7 +5,7 @@ from aiogram.dispatcher import FSMContext
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 from .quest_callback_handlers import get_four_buttons_markup
-from ..states import QuestState
+from ..states import QuestState, CrossletteringState
 from ..templates import *
 from ..db.db_setup import users
 
@@ -41,6 +41,7 @@ async def process_user_input(state_num: int, message: types.Message, state: FSMC
                                                                          {"quest_finish": time.time(), "finished": True,
                                                                           "quest_time": time.time() - user_data[
                                                                               "quest_start"]}})
+            await CrossletteringState.sent.set()
         else:
             await state.update_data(wrong_answers=0)
             await QuestState.next()
