@@ -29,10 +29,7 @@ async def get_help(message: types.Message):
 
 
 async def so(message: types.Message):
-    if not started:
-        await forbid_message(message)
-    else:
-        await message.answer(so_msg()["text"], parse_mode="markdown")
+    await message.answer(so_msg()["text"], parse_mode="markdown")
 
 
 async def get_id(message: types.Message):
