@@ -14,7 +14,7 @@ def setup_logging():
 
 def get_basic_games_msg_template():
     markup = InlineKeyboardMarkup(row_width=2)
-    markup.insert(InlineKeyboardButton("Сервер в діскорді", "https://discord.gg/WJqe6F"))
+    markup.insert(InlineKeyboardButton("Сервер в діскорді", "https://discord.gg/Y4XWwn7"))
     markup.insert(InlineKeyboardButton("Список ігор", callback_data="get_games_list"))
     markup.insert(InlineKeyboardButton("Інструкція з Discord",
                                        "https://telegra.ph/%D0%86nstrukc%D1%96ya-z-koristuvannya-Discord-09-17"))
@@ -29,6 +29,6 @@ def get_server_link_markup():
         InlineKeyboardButton("Keep Talking and Nobody Explodes", callback_data="get_game_description|2|False"))
     markup.insert(InlineKeyboardButton("Minecraft", callback_data="get_game_description|3|False"))
     markup.insert(InlineKeyboardButton("Мафія", callback_data="get_game_description|4|False"))
-    markup.insert(InlineKeyboardButton("Сервер в діскорді", "https://discord.gg/WJqe6F"))
+    markup.insert(InlineKeyboardButton("Сервер в діскорді", "https://discord.gg/Y4XWwn7"))
     markup.insert(InlineKeyboardButton("Назад", callback_data="back_to_games_basic_menu"))
     return markup

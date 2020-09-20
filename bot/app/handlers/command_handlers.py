@@ -126,7 +126,8 @@ async def get_all_people_who_completed_quest(message: types.Message):
                 try:
                     spamwriter.writerow(
                         [document["tg_id"], "@" + document["username"], document["name"], document["quest_time"]])
-                except:
+                except Exception as e:
+                    print(e)
                     pass
         await message.answer_document(types.InputFile("users.csv"))
 
@@ -137,7 +138,8 @@ async def giveaway_spam(message: types.Message):
             try:
                 await bot.send_photo(document["tg_id"], giveaway_spam_msg()["photo"],
                                      giveaway_spam_msg()["text"] + stream_link, parse_mode="markdown")
-            except:
+            except Exception as e:
+                print(e)
                 pass
 
 
@@ -148,7 +150,8 @@ async def karantinnik_spam(message: types.Message):
                 await bot.send_photo(document["tg_id"], karantinnik_spam_msg()["photo"],
                                      karantinnik_spam_msg()["text"] + stream_link,
                                      parse_mode="markdown")
-            except:
+            except Exception as e:
+                print(e)
                 pass
 
 
@@ -157,7 +160,8 @@ async def send_to_all(message: types.Message):
         async for document in users.find():
             try:
                 await bot.send_message(document["tg_id"], message.text.split("/all ")[1], parse_mode="markdown")
-            except:
+            except Exception as e:
+                print(e)
                 pass
 
 
@@ -174,7 +178,8 @@ async def ff_end(message: types.Message):
             try:
                 await bot.send_photo(document["tg_id"], ff_end_msg()["photo"], ff_end_msg()["text"],
                                      parse_mode="markdown")
-            except:
+            except Exception as e:
+                print(e)
                 pass
 
 
@@ -192,7 +197,8 @@ async def change_global_state(message: types.Message):
             try:
                 await bot.send_message(document["tg_id"], start_msg()["text"], disable_web_page_preview=True)
                 await bot.send_message(document["tg_id"], "Хутчіш натискай /quest та починай свою подорож!")
-            except:
+            except Exception as e:
+                print(e)
                 pass
 
         started = not started
